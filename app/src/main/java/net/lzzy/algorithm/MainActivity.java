@@ -2,10 +2,15 @@ package net.lzzy.algorithm;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.ZoomControls;
 
+import org.json.JSONException;
+
+import java.time.chrono.MinguoChronology;
 import java.util.Calendar;
 import java.util.Random;
 
@@ -35,7 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 displayItems(edtItems);
                 break;
             case R.id.activity_main_btn_sort:
-                directSort();
+                sorting();
+//                directSort();
                 displayItems(tvResult);
                 break;
             default:
@@ -73,30 +79,36 @@ private void directSort() {
             int minpos=i;
             for (int j=i+1;j<items.length;j++){
                 if (items[minpos].compareTo(items[j])>0){
-                    minpos=j;
+                        minpos=j;
                 }
             }
-            swap(minpos,i);
+//            swap(minpos,i);
         }
         }
 
-    private void swap(int y, int z) {
-           int tmp=items[y];
-            items[y]=items[z];
-            items[z]=tmp;
+//    private void swap(int y, int z) {
+//           int tmp=items[y];
+//            items[y]=items[z];
+//            items[z]=tmp;
+//    }
+
+
+
+    //第i+1个跟第i个相比较，如果第i+1比第i个小，则第i+1个，跟前面有序的区域在进行比较；
+    //第i个跟第i-1个比如果第i个比i-1个小，则第i个继续跟第i-2个继续相比较……直到i与第i-z个相比较大于0；
+
+    private void  sorting() {
+        for (int i=0;i<items.length;i++){
+            int a=++i;
+            if (items[a].compareTo(items[i])<0){
+                for (int j=0;j<i;j++){
+                    if (items[a].compareTo(i-j)>0){
+                        int b=i-j;
+                    }
+                }
+            }
+        }
     }
-
-
-//        int R0=0;
-//        for (int i=0;i<items.length;i++){
-//                for (int j=i+1;j<=i;j++){
-//                   if (items[i]>items[j]){
-//                       R0=items[j];
-//                       items[j]=items[i];
-//                       items[i]=R0;
-//                    }
-//                }
-//            }
 
     private void generateItems() {
         items = new Integer[10];
