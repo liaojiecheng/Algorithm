@@ -80,8 +80,10 @@ private void directSort() {
         }
         }
 
-    private void swap(int minpos, int i) {
-            items[i]=minpos;
+    private void swap(int y, int z) {
+           int tmp=items[y];
+            items[y]=items[z];
+            items[z]=tmp;
     }
 
 
