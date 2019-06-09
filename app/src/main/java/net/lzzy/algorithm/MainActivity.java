@@ -58,20 +58,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tv.setText(display);
     }
 
-//    private void directSort() {
-//        //todo:直接选择排序的具体实现
-//        //for循环
-//  //定义一个空值，然后for循环找出在无序区域中最小的一个，然后再用最小的跟无序区域的第一个数值的位置交换。
-//  //一直重复以上的循环，直到[i]=[j];
-//        for (int i=0;i<items.length;i++){
-//            for (int j=i+1;j<items.length;j++){
-//                if (items[i]>items[j]){
-//                    int R=items[i];
-//                    items[i]=items[j];
-//                    items[j]=R;
-//                }
-//            }
-//        }
+
+// todo:直接选择排序的具体实现
     //分为有序区和无序区，每一趟排序都在无序区一次对比，记录对比区域的最小元素的位置。
     //然后把无序区的第一个袁术和所记录的最小元素进行交换，无序区少一个、有序区多一个，循环往复直至无序区元素数量为0
 private void directSort() {
@@ -86,11 +74,11 @@ private void directSort() {
         }
         }
 
-//    private void swap(int y, int z) {
+//    private void swap() {
 //           int tmp=items[y];
-//            items[y]=items[z];
-//            items[z]=tmp;
-//    }
+////            items[y]=items[z];
+////            items[z]=tmp;
+////    }
 
 
 
@@ -98,17 +86,22 @@ private void directSort() {
     //第i个跟第i-1个比如果第i个比i-1个小，则第i个继续跟第i-2个继续相比较……直到i与第i-z个相比较大于0；
 
     private void  sorting() {
-        for (int i=0;i<items.length;i++){
-            int a=++i;
-            if (items[a].compareTo(items[i])<0){
-                for (int j=0;j<i;j++){
-                    if (items[a].compareTo(i-j)>0){
-                        int b=i-j;
-                    }
+            for (int i = 1; i < items.length; i++) {
+                int j = i;
+                while (j > 0 && items[j] < items[j - 1]) {
+                    swap(j,j-1);
+                    j--;
                 }
             }
         }
+
+    private void swap(int y, int z) {
+        int tmp=items[y];
+        items[y]=items[z];
+        items[z]=tmp;
     }
+
+
 
     private void generateItems() {
         items = new Integer[10];
