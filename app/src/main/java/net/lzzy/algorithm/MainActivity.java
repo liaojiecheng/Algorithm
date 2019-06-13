@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 "\n交换次数："+directSort.getNumbeC()+
                                 "\n移动次数："+directSort.getNumbeB()+
                                 "\n运行时长："+directSort.getDuration())
+
                         .show();
                 displayItems(tvResult);
                 break;
