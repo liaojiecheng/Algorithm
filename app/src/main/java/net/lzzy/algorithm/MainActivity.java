@@ -1,5 +1,6 @@
 package net.lzzy.algorithm;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputFilter;
@@ -8,10 +9,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ZoomControls;
 
+import net.lzzy.algorithm.algorlib.DirectSort;
+
 import org.json.JSONException;
 
 import java.time.chrono.MinguoChronology;
 import java.util.Calendar;
+import java.util.Dictionary;
 import java.util.Random;
 
 /**
@@ -42,6 +46,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.activity_main_btn_sort:
                 sorting();
 //                directSort();
+                displayItems(tvResult);
+                DirectSort directSort=new DirectSort(items);
+                directSort.directSort();
+                items=directSort.returnResoult();
+                new AlertDialog.Builder(MainActivity.this).setTitle("排序完成")
+                        .setMessage("对比次数："+directSort.getNumbeA()+
+                                "\n交换次数："+directSort.getNumbeC()+
+                                "\n移动次数："+directSort.getNumbeB()+
+                                "\n运行时长："+directSort.getDuration())
+                        .show();
                 displayItems(tvResult);
                 break;
             default:
