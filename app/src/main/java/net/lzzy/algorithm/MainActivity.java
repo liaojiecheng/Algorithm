@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (Integer i : items) {
             display = display.concat(i + ",");
         }
+
         display = display.substring(0, display.length() - 1);
         tv.setText(display);
     }
