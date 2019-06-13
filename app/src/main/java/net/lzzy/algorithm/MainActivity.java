@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tv.setText(display);
     }
 
-
 // todo:直接选择排序的具体实现
     //分为有序区和无序区，每一趟排序都在无序区一次对比，记录对比区域的最小元素的位置。
     //然后把无序区的第一个袁术和所记录的最小元素进行交换，无序区少一个、有序区多一个，循环往复直至无序区元素数量为0
