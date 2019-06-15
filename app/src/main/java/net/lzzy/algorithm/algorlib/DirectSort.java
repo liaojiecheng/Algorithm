@@ -86,7 +86,6 @@ public class DirectSort implements Comparable {
 
 
 
-
 //    //排序方法
 //    private void  sorting() {
 //        for (int i = 1; i < items.length; i++) {
