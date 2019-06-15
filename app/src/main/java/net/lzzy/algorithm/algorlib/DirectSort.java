@@ -53,7 +53,6 @@ public class DirectSort implements Comparable {
         items[z]=tmp;
     }
 
-
     //返回排序结果
     public Integer[] returnResoult(){
         directSort();
