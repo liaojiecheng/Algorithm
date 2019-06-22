@@ -14,4 +14,4 @@ public class BianrySearch  <T extends Comparable<? super T >> extends BasesearSo
   public   int search(T key) {
         return 0;
     }
-}n
+}
