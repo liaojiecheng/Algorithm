@@ -28,6 +28,7 @@ public class sortFactory  {
         return sort;
     }
     public static  String [] getsortNames(){
-        return  new String[]{"直接选择排序","直接插入排序","希尔排序"};
+        return  new String[]{
+                "直接选择排序","直接插入排序","希尔排序"};
     }
 }

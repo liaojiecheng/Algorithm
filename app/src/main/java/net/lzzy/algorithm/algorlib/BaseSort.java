@@ -6,7 +6,7 @@ import java.sql.Time;
 
 /**
  * Created by lzzy_gxy on 2019/6/15.
- * Description:
+ * Description:典型参数T需要加的约束，约束T实现Comparable<T>接口
  */
 public abstract class BaseSort <T extends Comparable<? super T >>  {
 
@@ -39,6 +39,7 @@ public abstract class BaseSort <T extends Comparable<? super T >>  {
         }
         return  display.substring(0, display.length() - 1);
     }
+
     public void sortTime(){
         long startTime=System.currentTimeMillis();
         sort();
@@ -46,6 +47,7 @@ public abstract class BaseSort <T extends Comparable<? super T >>  {
         time=endTime-startTime;
         directSort=System.currentTimeMillis()-startTime;
     }
+
     public abstract  void sort();   //抽象类
 
     public long getTime() {  //算法的运行时长

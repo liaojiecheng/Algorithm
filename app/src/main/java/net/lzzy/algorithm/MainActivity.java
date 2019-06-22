@@ -1,9 +1,11 @@
 package net.lzzy.algorithm;
 
+import android.annotation.SuppressLint;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputFilter;
+import android.util.AndroidException;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -15,6 +17,7 @@ import android.widget.ZoomControls;
 import net.lzzy.algorithm.algorlib.BaseSort;
 import net.lzzy.algorithm.algorlib.DirectSort;
 import net.lzzy.algorithm.algorlib.InsertSort;
+import net.lzzy.algorithm.algorlib.SearchFactory;
 import net.lzzy.algorithm.algorlib.sortFactory;
 
 import org.json.JSONException;
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText edtItems;
     private TextView tvResult;
     private Spinner spinner;
+    private View container;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +49,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvResult = findViewById(R.id.activity_main_tv_result);
         initSpinner();
 
+
     }
+    @SuppressLint("WrongViewCast")
+    private void initSearch(){
+        spinner=findViewById(R.id.activity_main_btn_search);
+        spinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, SearchFactory.getsearchNames()));
+        container=findViewById(R.id.activity_min_btn_container);
+        findViewById(R.id.activity_main_btn_search).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
+
+
 
     @Override
     public void onClick(View v) {
@@ -72,16 +91,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .show();
                 displayItems(tvResult);
                 break;
+            case R.id.activity_main_btn_search:
 
         }
     }
 
     private void initSpinner() {
-
         Spinner spinner = findViewById(R.id.Spinner);
         spinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, sortFactory.getsortNames()));
 
     }
+
+
+
 
     private void displayItems(TextView tv) {    //生成随机数并显示出随机数
         String display = "";
@@ -97,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         items[m] = items[n];
         items[n] = temp;
     }
+
 
     private void generateItems() {       //生成随机数
         items = new Integer[10];
