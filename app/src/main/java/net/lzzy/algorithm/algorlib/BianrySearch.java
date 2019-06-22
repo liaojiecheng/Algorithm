@@ -15,4 +15,3 @@ public class BianrySearch  <T extends Comparable<? super T >> extends BasesearSo
         return 0;
     }
 }
-
