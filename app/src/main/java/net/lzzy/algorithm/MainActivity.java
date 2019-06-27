@@ -8,13 +8,17 @@ import android.text.InputFilter;
 import android.util.AndroidException;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ZoomControls;
 
+import net.lzzy.algorithm.algorlib.BaseSearch;
 import net.lzzy.algorithm.algorlib.BaseSort;
+import net.lzzy.algorithm.algorlib.BasesearSort;
 import net.lzzy.algorithm.algorlib.DirectSort;
 import net.lzzy.algorithm.algorlib.InsertSort;
 import net.lzzy.algorithm.algorlib.SearchFactory;
@@ -37,6 +41,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tvResult;
     private Spinner spinner;
     private View container;
+    private LinearLayout contalner;
+    private Spinner spSearch;
+    private Button btnSort;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +66,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.activity_main_btn_search).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+            resetSearch();
             }
-        });
+         });
+         resetSearch();
+    }
+
+    private  View.OnClickListener listener=new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            BaseSearch<Integer> search=
+                    SearchFactory.getInstance(spinner.getSelectedItemPosition(),items);
+                    if (search!=null){
+                        int pos=search.search(v.getId());
+                        tvResult.setText("该元素位于数组第".concat((pos+1) +"位"));
+                    }
+        }
+    };
+
+
+
+    private void resetSearch(){
+//        container
+        generateItems();
+
+
+
     }
 
 

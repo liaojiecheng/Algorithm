@@ -5,8 +5,8 @@ package net.lzzy.algorithm.algorlib;
  * Description:
  */
 public class SearchFactory {
-    public static <T extends Comparable<? super T>> BasesearSort<T>  getInstance(int key, T[] items){
-        BasesearSort<T> search;
+    public static <T extends Comparable<? super T>> BaseSearch<T>  getInstance(int key, T[] items){
+        BaseSearch<T> search;
         switch (key){
             case 0:
                 search = new DirectSearch<>(items);
